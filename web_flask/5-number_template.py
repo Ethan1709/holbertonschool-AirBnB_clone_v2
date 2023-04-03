@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""hello flask"""
+""" script that starts a Flask web application"""
 
 from flask import Flask, render_template
 
@@ -38,6 +38,6 @@ def is_int(n):
 @app.route('/number_template/<int:n>', strict_slashes=False)
 def is_int(n):
     if type(n) is int:
-        return render_template('5-number.html)
+        return render_template('5-number.html')
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
