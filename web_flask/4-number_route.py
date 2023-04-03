@@ -29,7 +29,7 @@ def p(text):
     return "Python {}".format(text)
 
 
-@app.route('/number/<n>')
+@app.route('/number/<n>', strict_slashes=False)
 def is_int(n):
     if isinstance(n, int):
         return "n is a number"
