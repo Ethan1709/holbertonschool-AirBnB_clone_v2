@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""hello flasks"""
+"""hello flask"""
 
 from flask import Flask, render_template
 
@@ -36,7 +36,7 @@ def is_int(n):
     
 
 @app.route('/number_template/<int:n>', strict_slashes=False)
-def is_int2(n):
+def is_int(n):
     if type(n) is int:
         return render_template('5-number.html')
 if __name__ == '__main__':
