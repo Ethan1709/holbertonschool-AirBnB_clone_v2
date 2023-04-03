@@ -33,5 +33,7 @@ def p(text):
 def is_int(n):
     if isinstance(n, int):
         return "n is a number"
+    else:
+        return 404
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
