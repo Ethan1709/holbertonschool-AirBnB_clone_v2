@@ -32,6 +32,6 @@ def p(text):
 @app.route('/number/<int:n>', strict_slashes=False)
 def is_int(n):
     if type(n) is int:
-        return n + " is a number"
+        return str(n) + " is a number"
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
