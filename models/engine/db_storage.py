@@ -3,7 +3,7 @@
 from models.base_model import BaseModel, Base
 from models.engine.file_storage import FileStorage
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, scoped_session, close_all_sessions
 import os
 
 
@@ -38,5 +38,22 @@ class DBStorage:
         if obj is not None:
             self.__session.delete(obj)
 
+    def reload(self):
+        """create all tables in the database"""
+
+        from models.base_model import Base
+        from models.amenity import Amenity
+        from models.city import City
+        from models.place import Place
+        from models.review import Review
+        from models.user import User
+        from models.state import State
+
+        Base.metadata.create_all(self.__engine)
+        session_factory = sessionmaker(bind=self.__engine,
+                                       expire_on_commit=False)
+        Session = scoped_session(session_factory)
+        self.__session = Session
+
     def close(self):
-        close_all_sessions(sessionmaker)
+        close_all_sessions(self)
